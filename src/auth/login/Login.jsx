@@ -60,7 +60,13 @@ const Login = () => {
                                 <input type={'password'} className="form-control" id={'login-password'} name="password" required />
                             </FormGroup>
                             <Button type="submit" className="btn-success mt-2" id="login-btn">{t('btnLabel')}</Button>
+                            <Button href="/auth/registration" className="mt-2" style={{marginLeft: '8px'}}>Sign Up</Button>
                         </Form>
+                        <div className="mt-2"><strong>Demo User</strong></div>
+                        <div>
+                            <p><b>username</b>: kminchelle</p>
+                            <p><b>password</b>: 0lelplR</p>
+                        </div>
                     </Col>
                 </Row>
             </Container>

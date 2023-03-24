@@ -1,3 +1,14 @@
+# About Projects
+
+This is a simple Sales inventory management with this followings-
+
+ - User authentication.
+ - Profile management.
+ - Multi-language support.
+
+For User and Profile management using dummy json api [Dummy JSON API](https://dummyjson.com/docs)
+
+For Multi-Language support using `i18next` package with `react-i18n`
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
