@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, Suspense, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import "./i18n";
+import PortalFooter from "./portal/footer/PortalFooter";
+import PortalNavbar from "./portal/navbar/PortalNavbar";
 
-function App() {
+const App: FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkUserToken = () => {
+    const userToken = localStorage.getItem("user-token");
+    if (!userToken || userToken === "undefined") {
+      setIsLoggedIn(false);
+    }
+    setIsLoggedIn(true);
+  };
+
+  useEffect(() => {
+    checkUserToken();
+  }, [isLoggedIn]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Suspense fallback={null}>
+        {isLoggedIn && <PortalNavbar />}
+        <Outlet />
+        {isLoggedIn && <PortalFooter />}
+      </Suspense>
+    </React.Fragment>
   );
-}
+};
 
 export default App;
